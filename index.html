@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-image: url('Background.jpeg'); /* Replace 'Background.jpeg' with your image file */
+            background-size: cover; /* Adjust the background-size property as needed */
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-image: url('MobileBackground.jpeg');
+            }
+        }
+
+        header {
+            background-color: cyan;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: 1400px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        .glide {
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .glide__slides img {
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none; /* initially hide all images */
+        }
+
+        .glide__slides img.active {
+            display: block; /* show the active image */
+        }
+
+        /* Apply custom styling to the fifth image */
+        .glide__slides img.fifth-image {
+            width: 140%; /* Increase the width */
+            max-width: none; /* Override max-width */
+        }
+
+        p {
+            color: black;
+            font-size: 68px;
+            white-space: nowrap; /* Prevent text wrapping to the next line */
+            overflow: hidden; /* Hide overflowing text */
+            animation: running-text 15s linear infinite; /* Run the animation continuously for 15 seconds */
+        }
+
+        @keyframes running-text {
+            from {
+                transform: translateX(100%); /* Start from the right side */
+            }
+            to {
+                transform: translateX(-100%); /* Move to the left side */
+            }
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 20px 40px; /* Increase the button size */
+            font-size: 24px; /* Increase the font size */
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Happy Birthday Daddy!</h1>
+    </header>
+
+    <section>
+        <div class="glide" id="imageCarousel">
+            <div class="glide__track" data-glide-el="track">
+                <div class="glide__slides">
+                    <img src="birthday_image6.jpeg" alt="Birthday Celebration 1" class="active">
+                    <img src="birthday_image1.jpeg" alt="Birthday Celebration 2" >
+                    <img src="birthday_image2.jpeg" alt="Birthday Celebration 3">
+                    <img src="birthday_image3.jpeg" alt="Birthday Celebration 4">
+                    <img src="birthday_image4.jpeg" alt="Birthday Celebration 5">
+                    <img src="birthday_image5.jpeg" alt="Birthday Celebration 6" class="fifth-image">
+                    <img src="birthday_image8.jpeg" alt="Birthday Celebration 7" class="fifth-image">
+                    <img src="birthday_image9.jpeg" alt="Birthday Celebration 8" class="fifth-image">
+                    <img src="birthday_image7.jpeg" alt="Birthday Celebration 9" >
+                </div>
+            </div>
+        </div>
+        
+        <p>Selamat Ulang Tahun Daddy, Semoga Panjang Umur Sehat Selalu Dan Terus Bahagia Ya!</p>
+        <button id="playPauseButton">Play The Song</button>
+    </section>
+
+    <audio id="birthdaySong" loop>
+        <source src="birthday_song2.mp3" type="audio/mp3">
+        <source src="birthday_song2.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        new Glide('.glide').mount();
+
+        const images = document.querySelectorAll('.glide__slides img');
+        let currentIndex = 0;
+
+        function changeImage() {
+            images.forEach(image => image.classList.remove('active'));
+            images[currentIndex].classList.add('active');
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        setInterval(changeImage, 3000);
+
+        const playPauseButton = document.getElementById('playPauseButton');
+        const birthdaySong = document.getElementById('birthdaySong');
+
+        playPauseButton.addEventListener('click', () => {
+            if (birthdaySong.paused) {
+                birthdaySong.play();
+                playPauseButton.textContent = 'Pause The Song';
+            } else {
+                birthdaySong.pause();
+                playPauseButton.textContent = 'Play The Song';
+            }
+        });
+    </script>
+
+</body>
+</html>
