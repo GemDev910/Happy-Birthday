@@ -155,8 +155,13 @@
             }
         });
 
-        // Uncomment the next line if you want to attempt auto-play
-        // birthdaySong.play();
+        // Attempt auto-play on user interaction (e.g., button click)
+        document.addEventListener('click', function () {
+            if (birthdaySong.paused) {
+                birthdaySong.play();
+                playPauseButton.textContent = 'Pause The Song';
+            }
+        });
     </script>
 
 </body>
