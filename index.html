@@ -135,32 +135,33 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
-        new Glide('.glide').mount();
-
-        const images = document.querySelectorAll('.glide__slides img');
-        let currentIndex = 0;
-
-        function changeImage() {
-            images.forEach(image => image.classList.remove('active'));
-            images[currentIndex].classList.add('active');
-            currentIndex = (currentIndex + 1) % images.length;
-        }
-
-        setInterval(changeImage, 3000);
-
-        const playPauseButton = document.getElementById('playPauseButton');
-        const birthdaySong = document.getElementById('birthdaySong');
-
-        playPauseButton.addEventListener('click', () => {
-            if (birthdaySong.paused) {
-                birthdaySong.play();
-                playPauseButton.textContent = 'Pause The Song';
-            } else {
-                birthdaySong.pause();
-                playPauseButton.textContent = 'Play The Song';
+        document.addEventListener('DOMContentLoaded', function () {
+            new Glide('.glide').mount();
+    
+            const images = document.querySelectorAll('.glide__slides img');
+            let currentIndex = 0;
+    
+            function changeImage() {
+                images.forEach(image => image.classList.remove('active'));
+                images[currentIndex].classList.add('active');
+                currentIndex = (currentIndex + 1) % images.length;
             }
+    
+            setInterval(changeImage, 3000);
+    
+            const playPauseButton = document.getElementById('playPauseButton');
+            const birthdaySong = document.getElementById('birthdaySong');
+    
+            playPauseButton.addEventListener('click', () => {
+                if (birthdaySong.paused) {
+                    birthdaySong.play();
+                    playPauseButton.textContent = 'Pause The Song';
+                } else {
+                    birthdaySong.pause();
+                    playPauseButton.textContent = 'Play The Song';
+                }
+            });
         });
     </script>
-
 </body>
 </html>
