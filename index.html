@@ -124,7 +124,7 @@
         </div>
         
         <p>Selamat Ulang Tahun Daddy, Semoga Panjang Umur Sehat Selalu Dan Terus Bahagia Ya!</p>
-        <button id="playPauseButton">Play The Song</button>
+        <button id="play">Play The Song</button>
     </section>
 
     <audio id="birthdaySong" loop>
@@ -137,30 +137,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             new Glide('.glide').mount();
-    
+
             const images = document.querySelectorAll('.glide__slides img');
             let currentIndex = 0;
-    
+
             function changeImage() {
                 images.forEach(image => image.classList.remove('active'));
                 images[currentIndex].classList.add('active');
                 currentIndex = (currentIndex + 1) % images.length;
             }
-    
+
             setInterval(changeImage, 3000);
-    
-            const playPauseButton = document.getElementById('playPauseButton');
-            const birthdaySong = document.getElementById('birthdaySong');
-    
-            playPauseButton.addEventListener('click', () => {
-                if (birthdaySong.paused) {
-                    birthdaySong.play();
-                    playPauseButton.textContent = 'Pause The Song';
-                } else {
-                    birthdaySong.pause();
-                    playPauseButton.textContent = 'Play The Song';
-                }
-            });
+
+            // Play button functionality
+            let playButton = document.getElementById("play");
+            function playMusic() {
+                let audio = new Audio("birthday_song3.mp3"); // Change the audio file name
+                audio.play();
+            }
+            playButton.addEventListener("click", playMusic);
         });
     </script>
 </body>
