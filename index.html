@@ -17,9 +17,11 @@
             zoom: 0.33;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 300px) {
             body {
                 background-image: url('MobileBackground.jpeg');
+                background-size: cover;
+                max-height: 2000px;
             }
         }
 
@@ -66,7 +68,7 @@
         p {
             color: black;
             font-size: 68px;
-            
+          
             animation: running-text 15s linear infinite;
         }
 
@@ -152,14 +154,6 @@
             } else {
                 birthdaySong.pause();
                 playPauseButton.textContent = 'Play The Song';
-            }
-        });
-
-        // Attempt auto-play on user interaction (e.g., button click)
-        document.addEventListener('click', function () {
-            if (birthdaySong.paused) {
-                birthdaySong.play();
-                playPauseButton.textContent = 'Pause The Song';
             }
         });
     </script>
