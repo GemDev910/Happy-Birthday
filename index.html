@@ -18,14 +18,17 @@
         }
 
         @media (max-width: 100px) {
+            html, body {
+                height: 100%;
+                overflow: hidden;
+            }
+        
             body {
                 background-image: url('MobileBackground.jpeg');
                 background-size: cover;
-                max-height: 50px;
-                overflow: hidden;
+                max-height: 100vh;
             }
         }
-
         header {
             background-color: cyan;
             padding: 20px;
