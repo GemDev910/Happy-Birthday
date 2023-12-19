@@ -123,19 +123,20 @@
                     <img src="birthday_image8.jpeg" alt="Birthday Celebration 7" class="fifth-image">
                     <img src="birthday_image9.jpeg" alt="Birthday Celebration 8" class="fifth-image">
                     <img src="birthday_image7.jpeg" alt="Birthday Celebration 9" >
+                    <img src="birthday_image10.jpeg" alt="Birthday Celebration 10" >
+                    <img src="birthday_image11.jpeg" alt="Birthday Celebration 11" >
+                    <img src="birthday_image12.jpeg" alt="Birthday Celebration 12" class="fifth-image">
+                    
+
                 </div>
             </div>
         </div>
         
         <p>Selamat Ulang Tahun Daddy, Semoga Panjang Umur Sehat Selalu Dan Terus Bahagia Ya!</p>
-        <button id="play">Play The Song</button>
+        <button id="playPause">Play The Song</button>
     </section>
 
-    <audio id="birthdaySong" loop>
-        <source src="birthday_song3.mp3" type="audio/mp3">
-        <source src="birthday_song3.ogg" type="audio/ogg">
-        Your browser does not support the audio element.
-    </audio>
+    <audio id="audio" loop src="https://raw.githubusercontent.com/GemDev910/Happy-Birthday/main/Birthday_song3.mp3"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script>
@@ -144,6 +145,9 @@
 
             const images = document.querySelectorAll('.glide__slides img');
             let currentIndex = 0;
+            let isPlaying = false;
+            const audio = document.getElementById('audio');
+            const playPauseButton = document.getElementById('playPause');
 
             function changeImage() {
                 images.forEach(image => image.classList.remove('active'));
@@ -151,15 +155,20 @@
                 currentIndex = (currentIndex + 1) % images.length;
             }
 
+            function playPauseMusic() {
+                if (isPlaying) {
+                    audio.pause();
+                    playPauseButton.textContent = 'Play The Song';
+                } else {
+                    audio.play();
+                    playPauseButton.textContent = 'Pause The Song';
+                }
+                isPlaying = !isPlaying;
+            }
+
             setInterval(changeImage, 3000);
 
-            // Play button functionality
-            let playButton = document.getElementById("play");
-            function playMusic() {
-                let audio = new Audio("birthday_song3.mp3"); // Change the audio file name
-                audio.play();
-            }
-            playButton.addEventListener("click", playMusic);
+            playPauseButton.addEventListener('click', playPauseMusic);
         });
     </script>
 </body>
