@@ -19,8 +19,8 @@
 
         @media (max-width: 100px) {
             html, body {
-                height: 100%;
-                overflow: hidden;
+                height: 100vh; /* Set body height to full viewport height */
+                overflow: hidden; /* Hide overflow to prevent scrolling */
             }
         
             body {
@@ -30,7 +30,11 @@
             }
 
             p {
-                font-size: 36px;
+                font-size: 20px;
+            }
+            button {
+                padding: 15px 30px; /* Adjust button size for smaller screens */
+                font-size: 20px;
             }
         }
         header {
@@ -42,6 +46,9 @@
 
         section {
             padding: 20px;
+            box-sizing: border-box;
+            height: calc(100% - 120px); /* Adjust section height */
+            overflow: auto; /* Enable scrolling within section */
         }
 
         img {
@@ -75,7 +82,8 @@
 
         p {
             color: black;
-            font-size: 68px;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
           
             animation: running-text 15s linear infinite;
         }
@@ -132,7 +140,7 @@
             </div>
         </div>
         
-        <p>Selamat Ulang Tahun Daddy, Semoga Panjang Umur Sehat Selalu Dan Terus Bahagia Ya!</p>
+        <p>Selamat Ulang Tahun Daddy, Semoga Panjang Umur Sehat Selalu Dan Terus Bahagia Ya 🥳🎂</p>
         <button id="playPause">Play The Song</button>
     </section>
 
